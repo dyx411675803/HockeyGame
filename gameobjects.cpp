@@ -16,10 +16,10 @@ namespace Hockey
     void RedRobot::Initialize()
     {
         QPixmap pixmap(":/picture/red.png");
-        radius = pixmap.height();
+        diameter = pixmap.height();
         pos_x = 150;
         pos_y = 60;
-        pixmap.scaled(radius,radius,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        pixmap.scaled(diameter,diameter,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
         texture.setTexture(pixmap);
         edge.setColor(QColor(255,0,255));
         edge.setWidth(1);
@@ -31,7 +31,7 @@ namespace Hockey
         painter->translate(pos_x,pos_y);
         painter->setBrush(texture);
         painter->setPen(edge);
-        painter->drawEllipse(0,0,radius,radius);
+        painter->drawEllipse(0,0,diameter,diameter);
         painter->restore();
     }
 
@@ -40,26 +40,26 @@ namespace Hockey
 
     }
 
-    void RedRobot::Move_x(int step)
+    void RedRobot::Move_x(float step)
     {
         pos_x+=step;
     }
 
-    void RedRobot::Move_y(int step)
+    void RedRobot::Move_y(float step)
     {
         pos_y+=step;
     }
 
-    int RedRobot::getX(){
+    float RedRobot::getX(){
         return pos_x;
     }
 
-    int RedRobot::getY(){
+    float RedRobot::getY(){
         return pos_y;
     }
 
     int RedRobot::getR(){
-        return radius;
+        return diameter / 2;
     }
 
     GreenRobot* GreenRobot::pInstance = NULL;
@@ -76,10 +76,10 @@ namespace Hockey
     void GreenRobot::Initialize()
     {
         QPixmap pixmap(":/picture/green.png");
-        radius = pixmap.height();
+        diameter = pixmap.height();
         pos_x = 150;
         pos_y = 440;
-        pixmap.scaled(radius,radius,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        pixmap.scaled(diameter,diameter,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
         texture.setTexture(pixmap);
         edge.setColor(Qt::green);
         edge.setWidth(1);
@@ -91,7 +91,7 @@ namespace Hockey
         painter->translate(pos_x,pos_y);
         painter->setBrush(texture);
         painter->setPen(edge);
-        painter->drawEllipse(0,0,radius,radius);
+        painter->drawEllipse(0,0,diameter,diameter);
         painter->restore();
     }
 
@@ -100,26 +100,26 @@ namespace Hockey
 
     }
 
-    void GreenRobot::Move_x(int step)
+    void GreenRobot::Move_x(float step)
     {
         pos_x+=step;
     }
 
-    void GreenRobot::Move_y(int step)
+    void GreenRobot::Move_y(float step)
     {
         pos_y+=step;
     }
 
-    int GreenRobot::getX(){
+    float GreenRobot::getX(){
         return pos_x;
     }
 
-    int GreenRobot::getY(){
+    float GreenRobot::getY(){
         return pos_y;
     }
 
     int GreenRobot::getR(){
-        return radius;
+        return diameter / 2;
     }
 
     Ball* Ball::pInstance = NULL;
@@ -136,16 +136,16 @@ namespace Hockey
     void Ball::Initialize()
     {
         QPixmap pixmap(":/picture/ball.png");
-        radius = pixmap.height();
+        diameter = pixmap.height();
         pos_x = 150;
         pos_y = 250;
-        pixmap.scaled(radius,radius,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        pixmap.scaled(diameter,diameter,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
         texture.setTexture(pixmap);
         edge.setColor(QColor(255,97,0));
         edge.setWidth(3);
 
         vx = 0;
-        vy = -5;
+        vy = -4;
     }
 
     void Ball::Draw(QPainter *painter)
@@ -154,7 +154,7 @@ namespace Hockey
         painter->translate(pos_x,pos_y);
         painter->setBrush(texture);
         painter->setPen(edge);
-        painter->drawEllipse(0,0,radius,radius);
+        painter->drawEllipse(0,0,diameter,diameter);
         painter->restore();
     }
 
@@ -163,37 +163,37 @@ namespace Hockey
 
     }
 
-    void Ball::Move_x(int step)
+    void Ball::Move_x(float step)
     {
         pos_x+=step;
     }
 
-    void Ball::Move_y(int step)
+    void Ball::Move_y(float step)
     {
         pos_y+=step;
     }
 
-    int Ball::getX(){
+    float Ball::getX(){
         return pos_x;
     }
 
-    int Ball::getY(){
+    float Ball::getY(){
         return pos_y;
     }
 
     int Ball::getR(){
-        return radius;
+        return diameter / 2;
     }
 
-    int Ball::getVelocity_x(){
+    float Ball::getVelocity_x(){
         return vx;
     }
 
-    int Ball::getVelocity_y(){
+    float Ball::getVelocity_y(){
         return vy;
     }
 
-    void Ball::setVelocity(int x, int y){
+    void Ball::setVelocity(float x, float y){
         Ball::GetInstance()->vx = x;
         Ball::GetInstance()->vy = y;
     }

@@ -38,16 +38,16 @@ namespace Hockey
     {
         switch (event->key()) {
         case Qt::Key_W:
-            RedRobot::GetInstance()->Move_y(-5);
+            GreenRobot::GetInstance()->Move_y(-5);
             break;
         case Qt::Key_S:
-            RedRobot::GetInstance()->Move_y(5);
+            GreenRobot::GetInstance()->Move_y(5);
             break;
         case Qt::Key_A:
-            RedRobot::GetInstance()->Move_x(-5);
+            GreenRobot::GetInstance()->Move_x(-5);
             break;
         case Qt::Key_D:
-            RedRobot::GetInstance()->Move_x(5);
+            GreenRobot::GetInstance()->Move_x(5);
             break;
         default:
             break;

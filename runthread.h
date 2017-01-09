@@ -2,6 +2,7 @@
 #define RUNTHREAD_H
 
 #include <QThread>
+#include <QDebug>
 
 namespace Hockey
 {

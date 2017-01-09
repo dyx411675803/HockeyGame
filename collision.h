@@ -2,6 +2,7 @@
 #define COLLISION_H
 
 #include <math.h>
+#include <QDebug>
 #include "gameobjects.h"
 
 namespace Hockey{
@@ -15,7 +16,8 @@ namespace Hockey{
 
         int checkCls();
 
-        void bounce();
+        void bounce_sides();
+        void bounce_tb();
         void col_RR();
         void col_GR();
 
@@ -24,6 +26,7 @@ namespace Hockey{
     private:
 
         static Collision* col;
+        Ball* ball = Ball::GetInstance();
 
     };
 }
